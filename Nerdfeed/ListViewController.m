@@ -9,12 +9,15 @@
 #import "ListViewController.h"
 #import "RSSChannel.h"
 #import "RSSItem.h"
+#import "WebViewController.h"
 
 @interface ListViewController ()
 
 @end
 
 @implementation ListViewController
+
+@synthesize webViewController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -42,6 +45,34 @@
     [[cell textLabel] setText:[item title]];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Push the web view controller onto the navigation stack - this implicitly
+    // creates the web view controller's view the first time through
+    [[self navigationController] pushViewController:webViewController animated:YES];
+    
+    // Grab the selected item
+    RSSItem *entry = [[channel items] objectAtIndex:[indexPath row]];
+    
+    // Construct a URL with the link string of the item
+    NSURL *url = [NSURL URLWithString:[entry link]];
+    
+    // Construct a request object with that URL
+    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+    
+    // Load the request into the web view
+    [[webViewController webView] loadRequest:req];
+    
+    // Set the title of the web view controller's navigation item
+    [[webViewController navigationItem] setTitle:[entry title]];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"Apple News";
 }
 
 - (void)fetchEntries

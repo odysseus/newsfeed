@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class RSSChannel;
+@class WebViewController;
 
 @interface ListViewController : UITableViewController <NSXMLParserDelegate>
 {
@@ -17,6 +18,8 @@
     
     RSSChannel *channel;
 }
+
+@property (nonatomic, strong) WebViewController *webViewController;
 
 - (void)fetchEntries;
 
