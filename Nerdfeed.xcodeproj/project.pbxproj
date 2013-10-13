@@ -19,6 +19,9 @@
 		94441F3D1808CFD800E5BB99 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94441F251808CFD800E5BB99 /* UIKit.framework */; };
 		94441F451808CFD800E5BB99 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94441F431808CFD800E5BB99 /* InfoPlist.strings */; };
 		94441F471808CFD800E5BB99 /* NerdfeedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 94441F461808CFD800E5BB99 /* NerdfeedTests.m */; };
+		94441F521808EBFF00E5BB99 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94441F511808EBFF00E5BB99 /* ListViewController.m */; };
+		94441F551809E67600E5BB99 /* RSSChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94441F541809E67600E5BB99 /* RSSChannel.m */; };
+		94441F58180A1C7100E5BB99 /* RSSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 94441F57180A1C7100E5BB99 /* RSSItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,12 @@
 		94441F421808CFD800E5BB99 /* NerdfeedTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NerdfeedTests-Info.plist"; sourceTree = "<group>"; };
 		94441F441808CFD800E5BB99 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		94441F461808CFD800E5BB99 /* NerdfeedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NerdfeedTests.m; sourceTree = "<group>"; };
+		94441F501808EBFF00E5BB99 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		94441F511808EBFF00E5BB99 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
+		94441F531809E67600E5BB99 /* RSSChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSChannel.h; sourceTree = "<group>"; };
+		94441F541809E67600E5BB99 /* RSSChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSChannel.m; sourceTree = "<group>"; };
+		94441F56180A1C7100E5BB99 /* RSSItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSItem.h; sourceTree = "<group>"; };
+		94441F57180A1C7100E5BB99 /* RSSItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +118,12 @@
 			children = (
 				94441F301808CFD800E5BB99 /* AppDelegate.h */,
 				94441F311808CFD800E5BB99 /* AppDelegate.m */,
+				94441F501808EBFF00E5BB99 /* ListViewController.h */,
+				94441F511808EBFF00E5BB99 /* ListViewController.m */,
+				94441F56180A1C7100E5BB99 /* RSSItem.h */,
+				94441F57180A1C7100E5BB99 /* RSSItem.m */,
+				94441F531809E67600E5BB99 /* RSSChannel.h */,
+				94441F541809E67600E5BB99 /* RSSChannel.m */,
 				94441F331808CFD800E5BB99 /* Images.xcassets */,
 				94441F281808CFD800E5BB99 /* Supporting Files */,
 			);
@@ -239,8 +254,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94441F551809E67600E5BB99 /* RSSChannel.m in Sources */,
+				94441F58180A1C7100E5BB99 /* RSSItem.m in Sources */,
 				94441F321808CFD800E5BB99 /* AppDelegate.m in Sources */,
 				94441F2E1808CFD800E5BB99 /* main.m in Sources */,
+				94441F521808EBFF00E5BB99 /* ListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
