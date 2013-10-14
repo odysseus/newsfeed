@@ -107,29 +107,21 @@
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
                                 duration:(NSTimeInterval)duration
 {
-    // Remove the current toolbar
-    [toolbar removeFromSuperview];
-    // Set to nil for good measure
-    toolbar = nil;
-    
     // Change the frame based on orientation
     CGRect toolbarFrame;
     CGRect bounds = [[UIScreen mainScreen] bounds];
-    if ([[UIApplication sharedApplication] statusBarOrientation] > 2) {
+    if (toInterfaceOrientation == UIDeviceOrientationPortrait ||
+        toInterfaceOrientation == UIDeviceOrientationPortraitUpsideDown) {
+        // Changing to portrait orientation
         toolbarFrame = CGRectMake(0, bounds.size.height - 44, bounds.size.width, 44);
     } else {
+        // Changing to landscape
         toolbarFrame = CGRectMake(0, bounds.size.width - 44, bounds.size.height, 44);
     }
 
-    // re-init the toolbar
-    toolbar = [[UIToolbar alloc] initWithFrame:toolbarFrame];
+    // Set the toolbar frame to the new value
+    toolbar.frame = toolbarFrame;
 
-    // Add the toolbar items, saved in instance variables so no need to re init them
-    NSArray *barItems = [NSArray arrayWithObjects:back, forward, nil];
-    [toolbar setItems:barItems];
-    
-    // Add the toolbar to the webview
-    [webView addSubview:toolbar];
     [self updateButtons];
 }
 
