@@ -52,7 +52,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Push the web view controller onto the navigation stack - this implicitly
     // creates the web view controller's view the first time through
-    [[self navigationController] pushViewController:webViewController animated:YES];
+    if (![self splitViewController]) {
+        [[self navigationController] pushViewController:webViewController animated:YES];
+    }
     
     // Grab the selected item
     RSSItem *entry = [[channel items] objectAtIndex:[indexPath row]];
@@ -118,8 +120,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     xmlData = nil;
     connection = nil;
     
-    NSLog(@"%@\n %@\n %@\n", channel, [channel title], [channel infoString]);
-    
     // Reload the table.
     [[self tableView] reloadData];
 }
@@ -154,7 +154,6 @@ didStartElement:(NSString *)elementName
  qualifiedName:(NSString *)qualifiedName
     attributes:(NSDictionary *)attributeDict
 {
-    NSLog(@"%@ found a %@ element", self, elementName);
     if ([elementName isEqual:@"channel"]) {
         
         // If the parser saw a channel, create new instance, store in our ivar
@@ -168,6 +167,14 @@ didStartElement:(NSString *)elementName
         [parser setDelegate:channel];
     }
 }
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)io
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+        return YES;
+    return io == UIInterfaceOrientationPortrait;
+}
+
 
 
 @end
