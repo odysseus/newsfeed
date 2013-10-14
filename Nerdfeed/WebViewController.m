@@ -7,6 +7,7 @@
 //
 
 #import "WebViewController.h"
+#import "RSSItem.h"
 
 @interface WebViewController ()
 
@@ -120,6 +121,7 @@
         toolbarFrame = CGRectMake(0, bounds.size.width - 44, bounds.size.height, 44);
     }
 
+    // re-init the toolbar
     toolbar = [[UIToolbar alloc] initWithFrame:toolbarFrame];
 
     // Add the toolbar items, saved in instance variables so no need to re init them
@@ -129,6 +131,24 @@
     // Add the toolbar to the webview
     [webView addSubview:toolbar];
     [self updateButtons];
+}
+
+// Delegate method for ListViewControllerDelegate
+- (void)listViewController:(ListViewController *)lvc handleObject:(id)object
+{
+    // Cast the passed object to RSSItem
+    RSSItem *entry = object;
+    
+    // Make sure that we are really getting a RSSItem
+    if (![entry isKindOfClass:[RSSItem class]])
+        return;
+    
+    // Grab the info from the item and push it into the appropriate views
+    NSURL *url = [NSURL URLWithString:[entry link]];
+    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+    [[self webView] loadRequest:req];
+    
+    [[self navigationItem] setTitle:[entry title]];
 }
 
 @end

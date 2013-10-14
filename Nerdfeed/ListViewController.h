@@ -24,3 +24,10 @@
 - (void)fetchEntries;
 
 @end
+
+@protocol ListViewControllerDelegate
+
+// Classes conforming to this protocol must implment this method
+- (void)listViewController:(ListViewController *)lvc handleObject:(id)object;
+
+@end

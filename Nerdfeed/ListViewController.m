@@ -59,17 +59,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     // Grab the selected item
     RSSItem *entry = [[channel items] objectAtIndex:[indexPath row]];
     
-    // Construct a URL with the link string of the item
-    NSURL *url = [NSURL URLWithString:[entry link]];
-    
-    // Construct a request object with that URL
-    NSURLRequest *req = [NSURLRequest requestWithURL:url];
-    
-    // Load the request into the web view
-    [[webViewController webView] loadRequest:req];
-    
-    // Set the title of the web view controller's navigation item
-    [[webViewController navigationItem] setTitle:[entry title]];
+    // All the handling for the URL request is done by the webViewController via the delegate method
+    [webViewController listViewController:self handleObject:entry];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -174,7 +165,6 @@ didStartElement:(NSString *)elementName
         return YES;
     return io == UIInterfaceOrientationPortrait;
 }
-
 
 
 @end
