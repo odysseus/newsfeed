@@ -47,11 +47,12 @@
     UITableViewCell *cell = [tableView
                              dequeueReusableCellWithIdentifier:@"UITableViewCell"];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                       reuseIdentifier:@"UITableViewCell"];
     }
     RSSItem *item = [[channel items] objectAtIndex:[indexPath row]];
     [[cell textLabel] setText:[item title]];
+    [[cell detailTextLabel] setText:[item subforum]];
     
     return cell;
 }
@@ -97,8 +98,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     // Create a container for the data
     xmlData = [[NSMutableData alloc] init];
     
-    // Connect to Apple's Hot News Feed
-    NSURL *url = [NSURL URLWithString:@"http://www.apple.com/pr/feeds/pr.rss"];
+    // Construct a URL that will ask the service for what you want -
+    // note we can concatenate literal strings together on multiple
+    // lines in this way - this results in a single NSString instance
+    NSURL *url = [NSURL URLWithString:
+                  @"http://forums.bignerdranch.com/smartfeed.php?"
+                  @"limit=1_DAY&sort_by=standard&feed_type=RSS2.0&feed_style=COMPACT"];
+    
+//    // Connect to Apple's Hot News Feed
+//    NSURL *url = [NSURL URLWithString:@"http://www.apple.com/pr/feeds/pr.rss"];
     
     // Use the URL to create the request
     NSURLRequest *req = [NSURLRequest requestWithURL:url];

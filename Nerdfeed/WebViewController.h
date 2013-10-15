@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ListViewController.h"
 
-@interface WebViewController : UIViewController <UIWebViewDelegate, ListViewControllerDelegate>
+@interface WebViewController : UIViewController
+<UIWebViewDelegate, ListViewControllerDelegate, UISplitViewControllerDelegate>
 {
     UIToolbar *toolbar;
     UIBarButtonItem *back;

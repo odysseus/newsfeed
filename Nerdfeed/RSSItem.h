@@ -15,6 +15,7 @@
 @property (nonatomic, weak) id parentParserDelegate;
 
 @property (nonatomic, strong) NSString *title;
+@property (nonatomic, weak) NSString *subforum;
 @property (nonatomic, strong) NSString *link;
 
 

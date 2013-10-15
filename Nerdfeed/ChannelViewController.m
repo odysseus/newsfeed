@@ -51,6 +51,7 @@
     return io == UIInterfaceOrientationPortrait;
 }
 
+// Delegate method for the ListViewController
 - (void)listViewController:(ListViewController *)lvc handleObject:(id)object
 {
     // Make sure the ListViewController gave us the right object
@@ -60,6 +61,25 @@
     channel = object;
     
     [[self tableView] reloadData];
+}
+
+// Delegate methods for the UISplitViewController
+- (void)splitViewController:(UISplitViewController *)svc
+     willHideViewController:(UIViewController *)aViewController
+          withBarButtonItem:(UIBarButtonItem *)barButtonItem
+       forPopoverController:(UIPopoverController *)pc
+{
+    [barButtonItem setTitle:@"List"];
+    
+    [[self navigationItem] setLeftBarButtonItem:barButtonItem];
+}
+
+- (void)splitViewController:(UISplitViewController *)svc
+     willShowViewController:(UIViewController *)aViewController
+  invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+    if (barButtonItem == [[self navigationItem] leftBarButtonItem])
+        [[self navigationItem] setLeftBarButtonItem:nil];
 }
 
 @end

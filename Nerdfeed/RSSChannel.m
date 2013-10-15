@@ -67,8 +67,10 @@ didStartElement:(NSString *)elementName
     
     // If the element that ended was the channel, give up control to
     // who gave us control in the first place
-    if ([elementName isEqual:@"channel"])
+    if ([elementName isEqual:@"channel"]) {
         [parser setDelegate:parentParserDelegate];
+        [self trimItemTitles];
+    }
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)str
@@ -76,4 +78,63 @@ didStartElement:(NSString *)elementName
     [currentString appendString:str];
 }
 
+- (void)trimItemTitles
+{
+    // Create a regular expression to parse the feed items
+    NSRegularExpression *reg =
+    [[NSRegularExpression alloc] initWithPattern:@"(.*) :: (.*) :: .*"
+                                         options:0
+                                           error:nil];
+    
+    // Loop through every item
+    for (RSSItem *i in items) {
+        NSString *itemTitle = [i title];
+        
+        // Find matches in the title string. The range
+        // argument specifies how much of the title to search;
+        // in this case, all of it.
+        NSArray *matches = [reg matchesInString:itemTitle
+                                        options:0
+                                          range:NSMakeRange(0, [itemTitle length])];
+        
+        // If there was a match...
+        if ([matches count] > 0) {
+            // Print the location of the match in the string and the string
+            NSTextCheckingResult *result = [matches objectAtIndex:0];
+            // One capture group, so two ranges, let's verify
+            if ([result numberOfRanges] == 3) {
+                
+                // Pull out the 2nd range, which will be the capture group
+                NSRange titleRange = [result rangeAtIndex:2];
+                NSRange subforumRange = [result rangeAtIndex:1];
+                
+                // Set the title of the item to the string within the capture group
+                [i setTitle:[itemTitle substringWithRange:titleRange]];
+                NSLog(@"%@", [itemTitle substringWithRange:subforumRange]);
+                [i setSubforum:[itemTitle substringWithRange:subforumRange]];
+            }
+        }
+    }
+}
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -10,7 +10,7 @@
 
 @implementation RSSItem
 
-@synthesize title, link, parentParserDelegate;
+@synthesize title, link, parentParserDelegate, subforum;
 
 - (void)parser:(NSXMLParser *)parser
 didStartElement:(NSString *)elementName
