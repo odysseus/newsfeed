@@ -24,7 +24,8 @@
 		94441F58180A1C7100E5BB99 /* RSSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 94441F57180A1C7100E5BB99 /* RSSItem.m */; };
 		94441F5B180A267900E5BB99 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94441F5A180A267900E5BB99 /* WebViewController.m */; };
 		94441F5E180CA7B100E5BB99 /* ChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94441F5D180CA7B100E5BB99 /* ChannelViewController.m */; };
-		94E26537180F55BA00128ADD /* BNRFeedStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E26536180F55BA00128ADD /* BNRFeedStore.m */; };
+		94E2653A18109B8200128ADD /* BNRFeedStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E2653918109B8200128ADD /* BNRFeedStore.m */; };
+		94E265401810A58400128ADD /* BNRConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E2653F1810A58400128ADD /* BNRConnection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,8 +65,10 @@
 		94441F5A180A267900E5BB99 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		94441F5C180CA7B100E5BB99 /* ChannelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelViewController.h; sourceTree = "<group>"; };
 		94441F5D180CA7B100E5BB99 /* ChannelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelViewController.m; sourceTree = "<group>"; };
-		94E26535180F55BA00128ADD /* BNRFeedStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BNRFeedStore.h; path = ../BNRFeedStore.h; sourceTree = "<group>"; };
-		94E26536180F55BA00128ADD /* BNRFeedStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BNRFeedStore.m; path = ../BNRFeedStore.m; sourceTree = "<group>"; };
+		94E2653818109B8200128ADD /* BNRFeedStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRFeedStore.h; sourceTree = "<group>"; };
+		94E2653918109B8200128ADD /* BNRFeedStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRFeedStore.m; sourceTree = "<group>"; };
+		94E2653E1810A58400128ADD /* BNRConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRConnection.h; sourceTree = "<group>"; };
+		94E2653F1810A58400128ADD /* BNRConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRConnection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,8 +128,10 @@
 		94441F271808CFD800E5BB99 /* Nerdfeed */ = {
 			isa = PBXGroup;
 			children = (
-				94E26535180F55BA00128ADD /* BNRFeedStore.h */,
-				94E26536180F55BA00128ADD /* BNRFeedStore.m */,
+				94E2653E1810A58400128ADD /* BNRConnection.h */,
+				94E2653F1810A58400128ADD /* BNRConnection.m */,
+				94E2653818109B8200128ADD /* BNRFeedStore.h */,
+				94E2653918109B8200128ADD /* BNRFeedStore.m */,
 				94441F301808CFD800E5BB99 /* AppDelegate.h */,
 				94441F311808CFD800E5BB99 /* AppDelegate.m */,
 				94441F501808EBFF00E5BB99 /* ListViewController.h */,
@@ -273,8 +278,9 @@
 				94441F5B180A267900E5BB99 /* WebViewController.m in Sources */,
 				94441F58180A1C7100E5BB99 /* RSSItem.m in Sources */,
 				94441F321808CFD800E5BB99 /* AppDelegate.m in Sources */,
-				94E26537180F55BA00128ADD /* BNRFeedStore.m in Sources */,
+				94E265401810A58400128ADD /* BNRConnection.m in Sources */,
 				94441F2E1808CFD800E5BB99 /* main.m in Sources */,
+				94E2653A18109B8200128ADD /* BNRFeedStore.m in Sources */,
 				94441F521808EBFF00E5BB99 /* ListViewController.m in Sources */,
 				94441F5E180CA7B100E5BB99 /* ChannelViewController.m in Sources */,
 			);
