@@ -18,7 +18,7 @@ didStartElement:(NSString *)elementName
  qualifiedName:(NSString *)qualifiedName
     attributes:(NSDictionary *)attributeDict
 {    
-    if ([elementName isEqual:@"title"]) {
+    if ([elementName isEqual:@"title"] || [elementName isEqual:@"entry"]) {
         currentString = [[NSMutableString alloc] init];
         [self setTitle:currentString];
     }
