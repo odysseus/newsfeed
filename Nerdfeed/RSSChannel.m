@@ -78,6 +78,26 @@ didStartElement:(NSString *)elementName
     [currentString appendString:str];
 }
 
+- (void)readFromJSONDictionary:(NSDictionary *)d
+{
+    // The top-level object contains a "feed" object, which is the channel.
+    NSDictionary *feed = [d objectForKey:@"feed"];
+    
+    // The feed has a title property, make this the title of our channel.
+    [self setTitle:[[feed objectForKey:@"title"] objectForKey:@"label"]];
+    
+    // The feed also has an array of entries, for each one, make a new RSSItem.
+    NSArray *entries = [feed objectForKey:@"entry"];
+    for (NSDictionary *entry in entries) {
+        RSSItem *i = [[RSSItem alloc] init];
+        
+        // Pass the entry dictionary to the item so it can grab its ivars
+        [i readFromJSONDictionary:entry];
+        
+        [items addObject:i];
+    }
+}
+
 - (void)trimItemTitles
 {
     // Create a regular expression to parse the feed items

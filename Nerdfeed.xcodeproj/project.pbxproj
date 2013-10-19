@@ -39,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		941A76071811EED70072089F /* JSONSerializable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONSerializable.h; sourceTree = "<group>"; };
 		94441F1E1808CFD800E5BB99 /* Nerdfeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nerdfeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94441F211808CFD800E5BB99 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		94441F231808CFD800E5BB99 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -128,6 +129,7 @@
 		94441F271808CFD800E5BB99 /* Nerdfeed */ = {
 			isa = PBXGroup;
 			children = (
+				941A76071811EED70072089F /* JSONSerializable.h */,
 				94E2653E1810A58400128ADD /* BNRConnection.h */,
 				94E2653F1810A58400128ADD /* BNRConnection.m */,
 				94E2653818109B8200128ADD /* BNRFeedStore.h */,

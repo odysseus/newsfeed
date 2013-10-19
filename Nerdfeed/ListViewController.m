@@ -134,7 +134,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     if (rssType == ListViewControllerRSSTypeBNR)
         [[BNRFeedStore sharedStore] fetchRSSFeedWithCompletion:completionBlock];
     else if (rssType == ListViewControllerRSSTypeApple)
-        [[BNRFeedStore sharedStore] fetchTopSongs:10
+        [[BNRFeedStore sharedStore] fetchTopSongs:100
                                    withCompletion:completionBlock];
 }
 

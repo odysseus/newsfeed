@@ -44,4 +44,19 @@ didStartElement:(NSString *)elementName
         [parser setDelegate:parentParserDelegate];
 }
 
+- (void)readFromJSONDictionary:(NSDictionary *)d
+{
+    [self setTitle:[[d objectForKey:@"title"] objectForKey:@"label"]];
+    
+    // Inside each entry is an array of links, each has an attribute object
+    NSArray *links = [d objectForKey:@"link"];
+    if ([links count] > 1) {
+        NSDictionary *sampleDict = [[links objectAtIndex:1]
+                                    objectForKey:@"attributes"];
+        
+        // The href of an attribute object is the URL for the sample audio file
+        [self setLink:[sampleDict objectForKey:@"href"]];
+    }
+}
+
 @end

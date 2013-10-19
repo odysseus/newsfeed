@@ -50,7 +50,7 @@
 {
     // Prepare a request URL, including the argument from the controller
     NSString *requestString = [NSString stringWithFormat:
-                               @"http://itunes.apple.com/us/rss/topsongs/limit=%d/xml", count];
+                               @"http://itunes.apple.com/us/rss/topsongs/limit=%d/json", count];
     
     NSURL *url = [NSURL URLWithString:requestString];
     
@@ -60,7 +60,7 @@
     
     BNRConnection *connection = [[BNRConnection alloc] initWithRequest:req];
     [connection setCompletionBlock:block];
-    [connection setXmlRootObject:channel];
+    [connection setJsonRootObject:channel];
     
     [connection start];
 }

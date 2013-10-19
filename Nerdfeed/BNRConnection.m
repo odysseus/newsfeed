@@ -10,7 +10,7 @@
 
 @implementation BNRConnection
 
-@synthesize request, completionBlock, xmlRootObject;
+@synthesize request, completionBlock, xmlRootObject, jsonRootObject;
 
 static NSMutableArray *sharedConnectionList = nil;
 
@@ -48,19 +48,33 @@ static NSMutableArray *sharedConnectionList = nil;
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    // If there is a "root object"
+    // Set a root object that will work for both JSON and XML
+    id rootObject = nil;
+    // Now check for an xmlRootObject
     if ([self xmlRootObject]) {
-        
-        // Create a parser with the incoming data and let the root object parse
-        // its contents
+        // Create a parser
         NSXMLParser *parser = [[NSXMLParser alloc] initWithData:container];
         [parser setDelegate:[self xmlRootObject]];
+        // Parse the data
         [parser parse];
+        // Set the root object
+        rootObject = [self xmlRootObject];
+    // Otherwise check for a jsonRootObject
+    } else if ([self jsonRootObject]) {
+        // Turn JSON data into basic model objects
+        NSDictionary *d = [NSJSONSerialization JSONObjectWithData:container
+                                                          options:0
+                                                            error:nil];
+        
+        // Construct the root object from the JSON data
+        [[self jsonRootObject] readFromJSONDictionary:d];
+        
+        rootObject = [self jsonRootObject];
     }
     
-    // Then, pass the root object to the completion block
+    // Finally pass the root object to the provided completion block
     if ([self completionBlock])
-        [self completionBlock]([self xmlRootObject], nil);
+        [self completionBlock](rootObject, nil);
     
     // Now, destroy this connection
     [sharedConnectionList removeObject:self];
