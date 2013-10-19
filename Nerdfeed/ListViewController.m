@@ -105,9 +105,22 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)fetchEntries
 {
+    // Get ahold of the segmented control that is currently in the title view
+    UIView *currentTitleView = [[self navigationItem] titleView];
+    
+    // Create a activity indicator and start it spinning in the nav bar
+    UIActivityIndicatorView *aiView = [[UIActivityIndicatorView alloc]
+                                       initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    [[self navigationItem] setTitleView:aiView];
+    [aiView startAnimating];
+    
     void (^completionBlock)(RSSChannel *obj, NSError *err) =
     ^(RSSChannel *obj, NSError *err) {
         // When the request completes, this block will be called.
+        
+        // When the request completes - success or failure - replace the activity
+        // indicator with the segmented control
+        [[self navigationItem] setTitleView:currentTitleView];
         
         if (!err) {
             // If everything went ok, grab the channel object and
